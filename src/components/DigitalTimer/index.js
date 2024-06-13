@@ -48,7 +48,7 @@ class DigitalTimer extends Component {
   }
 
   reset = () => {
-    this.setState({minutes: 25, seconds: 0})
+    this.setState({play: true, minutes: 25, seconds: 0})
   }
 
   render() {
@@ -74,40 +74,52 @@ class DigitalTimer extends Component {
               <div className="style">
                 <button type="button" onClick={this.changeAction}>
                   <img
-                    style={{height: '30px'}}
+                    style={{
+                      height: '45px',
+                      paddingRight: '10px',
+                      paddingTop: '20px',
+                    }}
                     src={
                       play
                         ? 'https://assets.ccbp.in/frontend/react-js/play-icon-img.png'
                         : 'https://assets.ccbp.in/frontend/react-js/pause-icon-img.png'
                     }
                     alt={play ? 'play icon' : 'pause icon'}
-                  />
+                  />{' '}
+                  <span
+                    style={{
+                      fontFamily: 'Roboto',
+                      fontSize: '30px',
+                      fontWeight: '1000',
+                    }}
+                  >
+                    {' '}
+                    {play ? 'Start' : 'Pause'}
+                  </span>
                 </button>
-                <h1
-                  style={{
-                    fontWeight: 'bold',
-                    marginLeft: '12px',
-                  }}
-                >
-                  {play ? 'Start' : 'Pause'}
-                </h1>
               </div>
               <div className="style">
                 <button type="button" onClick={this.reset}>
                   <img
-                    style={{height: '30px'}}
+                    style={{
+                      height: '45px',
+                      paddingRight: '10px',
+                      paddingTop: '20px',
+                    }}
                     src="https://assets.ccbp.in/frontend/react-js/reset-icon-img.png"
                     alt="reset icon"
-                  />
+                  />{' '}
+                  <span
+                    style={{
+                      fontFamily: 'Roboto',
+                      fontSize: '30px',
+                      fontWeight: '1000',
+                    }}
+                  >
+                    {' '}
+                    Reset
+                  </span>
                 </button>
-                <h1
-                  style={{
-                    fontWeight: 'bold',
-                    marginLeft: '12px',
-                  }}
-                >
-                  Reset
-                </h1>
               </div>
             </div>
             <div>
