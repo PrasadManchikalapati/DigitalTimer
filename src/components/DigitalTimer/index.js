@@ -24,12 +24,14 @@ class DigitalTimer extends Component {
     this.setState(prev => ({play: !prev.play}))
     if (!play === false) {
       this.timerId = setInterval(this.timer, 1000)
+    } else {
+      clearInterval(this.timerId)
     }
   }
 
   minIncrement = () => {
     const {minutes, play} = this.state
-    if (minutes >= 25 && play === true) {
+    if (play === true) {
       this.setState(prev => ({
         limit: prev.limit + 1,
         minutes: prev.minutes + (prev.limit + 1 - prev.minutes),
@@ -39,7 +41,7 @@ class DigitalTimer extends Component {
 
   minDecrement = () => {
     const {minutes, play} = this.state
-    if (minutes > 25 && play === true) {
+    if (minutes > 0 && play === true) {
       this.setState(prev => ({
         limit: prev.limit - 1,
         minutes: -(prev.minutes - (prev.limit - 1 + prev.minutes)),
@@ -55,7 +57,7 @@ class DigitalTimer extends Component {
     const {play, minutes, seconds, limit} = this.state
     return (
       <div className="bg-container">
-        <h1>Digital Timer</h1>
+        <h1 style={{textAlign: 'center'}}>Digital Timer</h1>
         <div className="container">
           <div className="container1">
             <div className="clock">
@@ -63,7 +65,7 @@ class DigitalTimer extends Component {
                 <h1 style={{color: '#4fdbd0'}}>
                   {minutes}:{seconds > 9 ? seconds : `0${seconds}`}
                 </h1>
-                <p style={{fontWeight: 'bold'}}>
+                <p style={{fontWeight: 'bold', fontSize: '25px'}}>
                   {play ? 'Paused' : 'Running'}
                 </p>
               </div>
@@ -136,6 +138,7 @@ class DigitalTimer extends Component {
                 >
                   -
                 </button>
+
                 <div style={{marginRight: '25px'}}>
                   <p
                     style={{
